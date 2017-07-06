@@ -19,6 +19,9 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: <%= ENV['REPOST_USER'] ||= 'repost' %>
+  password: <%= ENV['REPOST_DB_PASSWORD'] ||= '' %>
+  host: <%= ENV['REPOST_DB_HOST'] ||= 'localhost' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -81,5 +84,3 @@ test:
 production:
   <<: *default
   database: repost_production
-  username: repost
-  password: <%= ENV['REPOST_DATABASE_PASSWORD'] %>
